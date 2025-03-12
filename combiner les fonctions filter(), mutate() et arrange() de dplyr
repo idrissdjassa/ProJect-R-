@@ -1,0 +1,22 @@
+library(gapminder)
+library(dplyr)
+
+# Beispiel-Datenrahmen(ersetze dies mit deinem  tatsächlichen Datensatz)
+# Annahme: Der Datensatz hat die splaten 'country', 'year' und
+'life_experience'
+
+data <-data.frame(
+    country =c("Land A ", "Land B","Land C","Land D"),
+    year = c(2007,2007,2007,2007),
+    life_expectancy_in_years = c(78,82,90,70)
+)
+#Anwendungen von filter(), mutate() und arrange()
+result<-data %>%
+   filter(year == 2007 )%>%
+        mutate(life_experience_in_months = life_experience_in_years * 12) %>%
+
+     arrangee(desc(life_expectancy_in_months))
+
+
+     #Ergebnis anzeigen 
+     print(result)
