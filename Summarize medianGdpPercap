@@ -1,0 +1,18 @@
+# Lade notwendige Bibliotheken
+library(ggplot2)
+library(gapminder)
+library(dplyr)
+
+# Daten aggregieren nach Jahr und Kontinent
+by_year_continent <- gapminder %>%
+  group_by(year, continent) %>%
+  summarize(medianGdpPercap = median(gdpPercap))
+
+# Liniendiagramm erstellen
+ggplot(by_year_continent, aes(x = year, y = medianGdpPercap, color = continent)) +
+  geom_line(size = 1) +  # Linien für jede Kontinentengruppe
+  geom_point(size = 2) +  # Punkte zur besseren Sichtbarkeit
+  labs(title = "Évolution du PIB médian par habitant dans chaque continent",
+       x = "Année",
+       y = "PIB médian par habitant") +
+  theme_minimal()
