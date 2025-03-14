@@ -1,0 +1,32 @@
+# Daten für das Jahr 2007 aggregieren 
+summary_2007 <- gapminder %>%
+   filter(year == 2007) %>%  # Filter für 2007
+     group_by(continent) %>%
+       summarise(
+           medianGdpPercap = median(gdpPercap), #Mediane BIP pro Kopf
+           medianLifeExp = median(lifeExp) #Mediane Lebenserwartung   
+       )
+
+# Streudiagramm erstellen
+ggplot(summary_2007, aes(x = medianGdpPercap, y = medianLifeExp, color = continent)) +
+  geom_point(size = 5) +  # Große Punkte für bessere Sichbarkeit 
+  labs(title = "Comparaison du PIB Median et de l'esperance de vie mediane en 2007",
+       x = "PIB median par habitant",
+       y = "Esperance de vie mediane") +
+  theme_minimal()
+
+# Lösung
+
+library(gapminder)
+library(dplyr)
+library(ggplot2)
+
+# Summarize the median gdpPercap by year, then save it as by_year
+by_year <- gapminder %>%
+  group_by(year) %>%
+  summarize(medianGdpPercap = median(gdpPercap))
+
+# Create a line plot showing the change in medianGdpPercap over time
+ggplot(by_year, aes(x = year, y = medianGdpPercap)) +
+  geom_line() +
+  expand_limits(y = 0)
