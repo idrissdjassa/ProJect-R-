@@ -1,0 +1,18 @@
+# Bibliotheken laden
+library(gapminder)
+library(dplyr)
+library(ggplot2)
+
+# Medianes BIP pro Kopf nach Kontinent für das Jahr 1952 berechnen
+median_gdp <- gapminder %>%
+  filter(year == 1952) %>%
+  group_by(continent) %>%
+  summarise(medianGdp = median(gdpPercap, na.rm = TRUE))
+
+# Balkendiagramm erstellen
+ggplot(median_gdp, aes(x = continent, y = medianGdp, fill = continent)) +
+  geom_bar(stat = "identity") +
+  labs(title = "Medianes BIP pro Kopf nach Kontinent (1952)",
+       x = "Kontinent",
+       y = "Mediales BIP pro Kopf") +
+  theme_minimal()
