@@ -1,0 +1,84 @@
+counties_selected %>%
+
+  # Add population_walk containing the total number of people who walk to work 
+
+mutate(population_walk = population * walk / 100) %>%
+
+  # Count weighted by the new column, sort in descending order
+ 
+ count( state , wt = population_walk, sort = TRUE)
+
+ counties %>%
+    summarize(total_population = sum)(population),
+              average_unemployement = mean(unemployement))
+
+              counties %>%
+                  group_by(state)%>%
+                      summarize(total_pop = sum(population),
+                           average_unemployement = mean(unemployement) %>%         
+                           arrange(desc(average_unemployement))
+                          )
+
+                          counties %>%
+                              select(state,metro,county,population)
+
+                              counties %>%
+                                   group_by(state,metro) %>%
+                                       summarize(total_pop = sum(population))
+                                       ungroup()
+
+                                       summarize(min_population=min(population),
+           max_population=max(population),
+           average_income=mean(income))
+
+              mutate(density=total_population/total_density)
+
+                      arrange(denstity(desc))
+
+                      counties_selected %>%
+  # Group and summarize to find the total population
+  group_by(region,state) %>%
+  summarize(total_population=sum(population))
+
+
+  summarize(average_pop=mean(total_pop),
+  median_pop=median(total_pop))
+
+  slice_max()
+  counties_selected>-counties %>%
+  select(state,county,population,unemployment,income)
+
+  counties_selected %>%
+  group_by(state) %>%
+  slice_max(population, n = 1)
+
+
+  group_by(region)
+  slice_max(walk, n = 1)
+
+summarize(total_pop=sum(population)) %>%
+ungroup()
+count(metro)
+
+counties %>%
+select(state,county,drive:work_at_home)%>%
+arrange(drive)
+
+
+counties %>%
+select(state,county,contains("work"))
+
+counties %>%
+select(state,county,starts_with("income"))
+
+#others helpers 
+#contains()
+#starts_with()
+#ends_with()
+#last_col()
+#matches()
+
+counties %>%
+select(--census_id)
+
+filter(public_work>=50)
