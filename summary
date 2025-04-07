@@ -1,0 +1,46 @@
+#compare consecutivement les Vecteurs 
+v-lag(v)
+
+#Mattthew 
+babynames_fraction %>%
+filter(name="Matthew") %>%
+arrange(year) %>%
+mutate(difference = fraction-lag(fraction))
+
+#Biggest Jump in popularity
+babynames_fraction %>%
+filter(name="Matthew") %>%
+arrange(year) %>%
+mutate(difference = fraction-lag(fraction))
+arrange(desc(desc(difference))
+
+#Changes within every name 
+babynames_fraction %>%
+arrange(name,year) %>%
+group_by(name) %>%
+mutate(difference = fraction-lag(fraction)) %>%
+ungroup() %>%
+arrange(desc(difference)
+
+babynames_ratios_filtered %>%
+  # Extract the largest ratio from each name 
+  slice_max(ratio,n=1)%>%
+  # Sort the ratio column in descending order 
+ arrange(desc(ratio))%>%
+  # Filter for fractions greater than or equal to 0.001
+  filter(fraction >=0.00001)
+
+
+  #Transforming
+  select()
+  filter()
+  mutate()
+  arrange(()
+
+  #Aggregating
+  count()
+  group_by()
+
+  #Altering variables
+  rename()
+  relocate()
