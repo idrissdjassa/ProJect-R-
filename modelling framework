@@ -1,0 +1,16 @@
+#Exploratory data visualization: boxplot
+library(ggplot2)
+library(dplyr)
+library(moderndive)
+
+
+#Apply log10-transformation to outcome variable
+house_prices<-HOUSE_PRICES %>%
+mutate(log10_price = log10(price))
+
+#Boxplot
+ggplot(house_prices,aes(x=condition, y = log10_price))
+geom_boxplot()+
+labs(x="house condition", y = "log10 price",
+title="log10 house price over condition")
+
