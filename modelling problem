@@ -1,0 +1,172 @@
+#Modeling for explanation example From the moderndive package for ModernDive.com
+
+library(dplyr)
+library(moderndive)
+glimpse(evals)
+
+#Eploratory data analysis 
+library(ggplot2)
+ggplot(evals,aes(x=score))+
+geom_histogram(bindwidth = 0.25)+
+labs(x = "teaching scrore", y = "count")
+
+#Exploratory data analysis
+#compute mean , median and standard devaiation 
+
+evals %>%
+    summarize(mean_score = mean(score)),
+                median_score = median(score),
+                       sd_score = sd(score)
+
+
+                       # Load packages
+library(moderndive)
+library(ggplot2)
+
+# Plot the histogram
+ggplot(evals, aes(x = age)) +
+  geom_histogram(binwidth = 5) +
+  labs(x = "age", y = "count")
+
+
+#Modeling for Prediction example
+library(dyplr)
+library(moderndive)
+glimpse(house_prices)
+
+
+library(ggplot2)
+ggplot(house_prices,aes(x= price))+
+geom_histogram()+
+labs(x = "house price",y="count")
+
+#Log10 Transformation log() transform price and size 
+house_prices <- house_prices %>%
+     mutate(log10_price = log10(price)) %>%
+         select(price,log10_price)
+
+# Histogram of original outcome variable
+ggplot(house_prices, aes(x=price))+
+  geom_histogram()+
+       labs(x="house price",y="count")
+
+
+       #Histogram of the new log10-transformed outcome variable 
+       ggplot(house_prices,aes(x=log10_price))+
+       geom_histogram()*
+       lab s(x="log10 house price",y="count")
+
+   
+       # Load packages
+library(moderndive)
+library(dplyr)
+library(ggplot2)
+
+# Add log10_size
+house_prices_2 <- house_prices %>%
+  mutate(log10_size = log10(sqft_living))
+
+
+
+
+# Load packages
+library(moderndive)
+library(dplyr)
+library(ggplot2)
+
+# Add log10_size
+house_prices_2 <- house_prices %>%
+  mutate(log10_size = log10(sqft_living))
+
+# Add log10_size
+house_prices_2 <- house_prices %>%
+  mutate(log10_size = log10(sqft_living))
+
+# Plot the histogram  
+ggplot(house_prices_2, aes(x = log10_size)) +
+  geom_histogram() +
+  labs(x = "log10 size", y = "count")
+
+  #EDA of relationship
+  library(ggplot2)
+  library(dplyr)
+  library(moderndive)
+
+  ggplot(evals,aes(x=age, y = score)) +
+  geom_jitter()+
+  labs(x="age",y="score",
+  title = "Teaching score over age(jittered) ")
+
+  #Computing the correlation coefficient 
+  evals %>%
+  summarize(correlation = cor(score,age))
+
+  # Plot the histogram
+ggplot(evals,aes(x=age,y=score)) +
+   geom_jitter()+
+     labs(x = "Beauty score", y = "count")
+
+
+     # Jitter plot
+ggplot(evals, aes(x = bty_avg, y = score)) +
+  geom_jitter() +
+  labs(x = "beauty score", y = "teaching score")
+
+
+  # Compute correlation
+evals %>%
+  summarize(correlation = cor(score, bty_avg))
+  #score and bty_avg are weakly positively associated.
+
+
+  #The modeling Problem for prediction
+
+
+
+  #Condition of house 
+  house_prices %>%
+  select(log10_price,condition) %>%
+  glimpse()
+  
+#Exploratory data visualization: boxplot
+library(ggplot2)
+library(dplyr)
+library(moderndive)
+
+
+#Apply log10-transformation to outcome variable
+house_prices<-house_prices %>%
+mutate(log10_price = log10(price))
+
+#Boxplot
+ggplot(house_prices,aes(x=condition, y = log10_price))
+geom_boxplot()+
+labs(x="house condition", y = "log10 price",
+title="log10 house price over condition")
+
+
+#Exploratory data summaries
+  group_by(conditions) %>%
+      summarize(mean=mean(log10_price),
+       sd = sd(log10_price), n= n())
+
+       # View the structure of log10_price and waterfront
+house_prices %>%
+  select(log10_price, waterfront) %>%
+  glimpse()
+
+# Plot 
+ggplot(house_prices, aes(x = waterfront, y = log10_price)) +
+  geom_boxplot() +
+  labs(x = "waterfront", y = "log10 price")
+
+  # Calculate stats
+house_prices %>%
+  group_by(waterfront) %>%
+  summarize(mean_log10_price = mean(log10_price), n = n())
+  
+# Prediction of price for houses without view of waterfront
+10^(5.66)
+
+# Prediction of price for houses with view of waterfront
+10^(6.12)
