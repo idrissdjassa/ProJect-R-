@@ -1,0 +1,28 @@
+install.packages("gapminder")
+install.packages("tidyverse")
+install.packages("knitr")
+
+# Pakete laden
+library(gapminder)
+library(tidyverse)
+library(knitr)
+
+# Datensatz als Objekt gapminder speichern
+gapminder <- gapminder
+
+# Zufallsstichprobe vom Umfang n=15 ziehen
+sample_n(gapminder,15) %>%
+  kable()
+
+#Klausurfragen = welche Datensatz es geht da = Paneldaten
+
+
+gap_con_2007 <- gapminder %>% #Datensatz gapminder nehmen und dann
+  filter(year==2007) %>%      #Beobachtungen für 2007 auswählen und dann
+  select(continent)           #nur die Variable continent behalten
+
+
+# absolute Häufigkeit auszählen
+gap_con_2007 %>%              #oben erstellen Datensatz nehmen und dann
+  count(continent)%>%         #auszählen wie häufig ein bestimmtes Kontinent vorkommt
+  kable()                     #Tabelle formatieren
