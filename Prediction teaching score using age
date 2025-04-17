@@ -1,0 +1,49 @@
+#Refresher: Regression table 
+
+library(ggplot2)
+library(dplyr)
+library(moderdive)
+
+#Fit regression model using formula of form: y-x
+model_score_1 <-lm(score-age,data = evals)
+
+
+#Outputs regression table using wrapper function. 
+get_regression_table(model_score_1)
+
+#Get Information on each point.
+get_regression_points(model_score_1)
+
+Here's an example Template in R 
+y_hat <- intercept + slope * x
+y_hat
+
+
+# Fit regression model
+model_score_2 <- lm(score ~ bty_avg, data = evals)
+
+# Get regression table
+get_regression_table(model_score_2)
+
+# Get all fitted/predicted values and residuals
+get_regression_points(model_score_2)
+
+# Fit regression model
+model_score_2 <- lm(score ~ bty_avg, data = evals)
+
+# Get regression table
+get_regression_table(model_score_2)
+
+# Get all fitted/predicted values and residuals
+
+get_regression_points(model_score_2) %>% 
+
+mutate(score_hat_2 = 3.88 + 0.067 * bty_avg)
+
+# Get all fitted/predicted values and residuals
+get_regression_points(model_score_2) %>% 
+
+mutate(residual_2 = score - score_hat)
+
+
+
