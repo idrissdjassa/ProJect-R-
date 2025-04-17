@@ -1,0 +1,69 @@
+#Exploratory data visualization
+library(ggplot2)
+library(dplyr)
+library(moderndive)
+
+
+ggplot(evals, aes( x = gender , y = score )) +
+geom_boxplot()+
+labs(x="gender", y="score")
+
+
+#Facetted histogram
+library(ggplot2)
+library(dplyr)
+library(moderndive)
+
+
+ggplot(evals, aes( x = score )) +
+geom_histogram(binwidth=0,25)+
+facet_wrap(-gender)+
+labs(x="gender", y="score")
+
+#Fit regression model
+
+model_score_3 <-lm(score-gender,data = evals)
+
+#Get regression table
+
+get_regression_table(model_score_3)
+
+#Compute group means based on gender 
+evals %>%
+group_by(gender) %>%
+summarize(avg_score = mean (score))
+
+#A different categorical explanatory variable rank
+evals %>%
+group_by(rank) %>%
+summarize(n = n())
+
+
+ggplot(evals, aes(x=rank, y = score))+
+geom_boxplot()+
+labs(x="rank",y="score")
+
+evals %>%
+  group_by(rank) %>%
+  summarize(n = n(), mean_score = mean(score), sd_score = sd(score))
+
+# Fit regression model
+model_score_4 <- lm(score ~ rank, data = evals)
+
+# Get regression table
+get_regression_table(model_score_4)
+
+# Fit regression model
+model_score_4 <- lm(score ~ rank, data = evals)
+
+# Get regression table
+get_regression_table(model_score_4)
+
+# teaching mean
+teaching_mean <- 4.28
+
+# tenure track mean
+tenure_track_mean <- 4.28 - 0.130
+
+# tenured mean
+tenured_mean <- 4.28 - 0.145
