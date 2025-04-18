@@ -1,0 +1,22 @@
+#Fit regression model using formula of form: y - x1 + x2
+model_price-1 <-lm(log10_price-log10_size + yr_built, data = house_price)
+
+#Output regression table
+get_regression_table(model_price_1)
+
+#Predicted Value Make Prediction 
+5.38 + 0.913 * 3.07 - 0.00138 * 1980
+
+#Output point-by-point information
+get_regression_points(model_price_1)
+
+#square all residuals and sum them
+get_regression_points(model_price_19) %>%
+mutate(sq_residuals = residual^2) %>%
+summarize(sum_sq_residuals = sum(sq_residuals))
+
+# Automate prediction and residual computation
+get_regression_points(model_price_2) %>%
+  mutate(sq_residuals = residual^2) %>%
+  summarize(sum_sq_residuals = sum(sq_residuals))
+
