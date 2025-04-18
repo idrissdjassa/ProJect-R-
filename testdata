@@ -1,0 +1,36 @@
+#Randomly shuffle order or rows:
+   house_prices_shuffled <-house_prices %>%
+      sample_frac(size = 1,replace = FALSE)
+
+#Split into train and test:
+     train <-house_prices_shuffled %>%
+          slice (1:10000)
+              test<-house_prices_shuffled %>%
+                  slice(10001:21,613)
+
+#Training models on training data 
+   train_model_price_1 <-lm(log10_price ~ log10_size + yr_built, data = train)
+      get_regression_table(train_model_price_1)
+
+
+#Train model on train : 
+  train_model_price_1 <-lm(log10_price~log10_size + yr_built, data = train)
+    #Get predictions on test
+       get_regression_points(train_model_price_1, newdata = test)
+
+#Train model
+   train_model_price_1 <-lm(log10_price ~ log10_size + yr_built, data = train)
+
+      #Get predictions and compute RMSE
+          get_regression_point(train_model_price_1,newdata = test) %>%
+                mutate(sq_residuals = residual^2) %>%
+                     summarize(rmse = sqrt(mean(sq_residuals)))
+
+
+#Train model
+   train_model_price_3 <-lm(log10_price ~ log10_size + yr_built, data = train)
+
+      #Get predictions and compute RMSE
+          get_regression_point(train_model_price_3,newdata = test) %>%
+                mutate(sq_residuals = c) %>%
+                     summarize(rmse = sqrt(mean(sq_residuals)))
