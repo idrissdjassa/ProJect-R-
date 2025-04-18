@@ -1,0 +1,11 @@
+#Model 1 - Two numerical: 
+  model_price_1 <-lm(logo10_price ~ log10_size + yr_built, data = house_prices)
+     get_regression_points(model_price_1)%>%
+        mutate(sq_residuals = residual^2)%>%
+                  summarize(sum_sq_residuals = sum(sq_residuals))
+
+   #Model 3 -One numerical & one categoricaö:
+      model_price_3 <-lm(log10_price ~.log10_size + condition, data = house_prices)
+             get_regression_points(model_price_3)%>%
+                   mutate(sq_residuals = residual^2)%>%
+                         summarize(sum_sq_residuals = sum(sq_residuals))
