@@ -1,0 +1,6 @@
+# Pour etre un data scientist efficace vous devez developper un large eventail de outils pour votre boite
+      #a outils de sciende des donnees 
+              #Fit model 
+                      model_score_1<-lm(score ~ age , data = evals
+                         #Output regression table  
+                                           get_regression_table(model_score_1)
