@@ -1,0 +1,37 @@
+library(dplyr)
+library(moderndive)
+
+#preview only certain variable
+house_prices %>%
+select(price,sqft_living,condition,waterfront) %>%
+glimpse()
+
+#log10() transform price and size 
+house_prices <-house_prices %>%
+mutate(
+log10_price=log10(price),
+log10_size=log10(sqft_living)
+)
+
+#Fit regression model using formula of form: y -x1 +x2
+model_price_1 <-lm(log10_price - log10_size + yr_built, data = house_prices)
+
+#Output regression table
+get_regression_table(model_price_1)
+
+# Create scatterplot with regression line
+ggplot(house_prices, aes(x = bedrooms, y = log10_price)) +
+  geom_point() +
+  labs(x = "Number of bedrooms", y = "log10 price") +
+  geom_smooth(method = "lm", se = FALSE)
+
+
+# Remove outlier
+house_prices_transform <- house_prices %>% 
+  filter(bedrooms < 33)
+
+# Create scatterplot with regression line
+ggplot(house_prices_transform, aes(x = bedrooms, y = log10_price)) +
+  geom_point() +
+  labs(x = "Number of bedrooms", y = "log10 price") +
+  geom_smooth(method = "lm", se = FALSE)
