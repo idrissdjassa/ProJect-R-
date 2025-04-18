@@ -1,0 +1,24 @@
+#Group mean & sd of log10_price and counts 
+house_prices %>%
+   group_by(conditions) %>%
+      summarize(mean = mean(log10_price),
+        sd = sd(log10_price),n = n()
+
+#Fit regression model using formula of form: y-x1 + x2 
+   model_price_3 <-lm(log10_price -log10_size + condition, data = house_prices)
+       #Output regression table
+            get_regression_table(model_price_3)
+
+#Create data frame of new houses 
+         new_houses <-data_frame(log10_size = c(2.9,3.6)
+          condition = factor(c(3,4)
+)
+            new_houses
+
+#Maek predictions on new data
+
+get_regression_points(model_price_3,newdata = new_houses)
+
+#Make prediction in original units by undoings log10()
+           get_regression_points(model_price_3, newdata = new_houses)%>%
+                      mutate(price_hat = 10^log10_price_hat)
