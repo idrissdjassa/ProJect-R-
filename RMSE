@@ -1,0 +1,62 @@
+#Model 1: Price as a function of size and year built
+  model_price_1 <-lm(logo10_price ~ log10_size + yr_built, data = house_prices)
+     get_regression_points(model_price_1) %>%
+                  summarize(r_squared = 1-var(residual)/var(log10_price))
+
+#Model 3: Price as a function of size and year built
+  model_price_3 <-lm(logo10_price ~ log10_size + yr_built, data = house_prices)
+     get_regression_points(model_price_3) %>%
+                  summarize(r_squared = 1 - var(residual) /var(log10_price))
+
+#Model 1: Price as a function of size and year built
+  model_price_1 <-lm(logo10_price ~ log10_size + yr_built, data = house_prices)
+      #sum of squared residuals
+         get_regression_points(model_price_1) %>%
+              mutate(sq_residuals = residuals^2) %>%
+                  summarize(sum_sq_residuals = sum(sq_residuals))
+
+#Mean squared error : use mean () instead of sum():
+   get_regression_points(model_price_1) %>%
+              mutate(sq_residuals = residuals^2) %>%
+                  summarize(mse= mean(sq_residuals))
+
+   #Root mean squared error :
+   get_regression_points(model_price_1) %>%
+              mutate(sq_residuals = residuals^2) %>%
+                  summarize(mse= mean(sq_residuals)) %>%
+                             mutate(rmse = sqrt(mse))
+
+
+#Recreate data frame of "new" houses
+      new_houses <-data_frame(  log10_size = c(2.9,3.6),
+condition = factor(c(3,4)
+)
+new_houses 
+
+#Get prediction
+get_regression_points(model_price_3),
+         newdata = new_houses)
+
+#Computer RMSE
+         get_regression_points(model_price_3) %>%
+             newdata = new_houses)%>%
+                 mutate(sq_residuals = residuals^2) %>%
+                  summarize(mse= mean(sq_residuals)) %>%
+                             mutate(rmse = sqrt(mse))
+
+# Get all residuals, square them, take the mean and square root
+      get_regression_points(model_price_2) %>%
+               mutate(sq_residuals = residual^2) %>%
+                  summarize(mse = mean(sq_residuals)) %>% 
+                     mutate(rmse = sqrt(mse))
+
+
+# MSE and RMSE for model_price_4
+ get_regression_points(model_price_4) %>%
+  mutate(sq_residuals = residual^2) %>%
+  summarize(mse = mean(sq_residuals), rmse = sqrt(mean(sq_residuals)))
+
+
+
+                
+
