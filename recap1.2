@@ -1,0 +1,19 @@
+library(gapminder)
+library(dplyr)
+library(ggplot2)
+
+# Scatter plot comparing gdpPercap and lifeExp, with color representing continent
+# and size representing population, faceted by year
+
+
+# Scatter-Plot mit Facetten für Kontinente
+ggplot(gapminder, aes(x = gdpPercap, y = lifeExp, color = continent,size = pop)) +
+  geom_point(alpha = 0.7) +
+  scale_x_log10() +  # Log-Skalierung für die Bevölkerungsgröße
+  labs(title = "BIP pro Kopf vs Lebenserwartung(1952-2007)",
+       x = "BIP pro Kopf (log-Skala)",
+       y = "Lebenserwartung",
+       color = "Kontinent",
+       size = "Bevölkerung")+
+  facet_wrap(~year) +  # Facetten nach dem Jahr
+  theme_minimal()
