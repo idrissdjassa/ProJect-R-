@@ -1,0 +1,50 @@
+gapminder %>%
+  summarize (meanLifeExp = mean(lifeExp)) #The Summarize Verb # Calculer la moyenne de la colonne mpg du dataset mtcars
+     filter(year == 2007) %>%
+       summarize(meanLifeExp = mean(lifeExp)),
+             totalPop = sum(pop))
+
+                   gapminder %>%
+                      summarize(Median_lifeExp = median(lifeExp))
+
+                         gapminder %>%
+                                 group_by(continent, year) %>%
+                                      summarize(medianLifeExp=median(lifeExp),maxGdpPercap=max(gdpPercap))
+
+                                        gapminder %>%
+                                                  filter( year == 1957) %>%
+                                                      summarize(medianLifeExp = median(lifeExp),
+                                                           maxGdpPercap = max(gdpPercap)) 
+                                                           
+                                                      gapminder %>%
+                                                group_by(year) %>%
+                                          summarize(meanLifeExp = mean(lifeExp),
+                                 totalPop = sum(pop))
+
+                           gapminder %>%
+                  filter(year == 2007) %>%
+            group_by(continent) %>%
+        summarize(meanLifeExp = mean(lifeExp),
+      totalPop = sum(pop))
+
+            
+              gapminder %>%
+                  group_by(year == 2007) %>%
+                      summarize(meanLifeExp = mean(lifeExp),
+                          totalPop = sum(pop))
+
+                              gapminder %>%
+                                  filter ( year == 1957) %>%
+                                       group_by(continent) %>%
+                                          summarize(medianLifeExp = median(LifeExp),
+                                            maxGdpPercap=max(gdpPercap))
+
+
+                                               gapminder %>%
+                                                     group_by(continent, year) %>%
+                                                         summarize(medianLifeExp=median(lifeExp),
+                                                               maxGdpPercap=max(gdpP
+
+                                                      by_year <- gapminder %>%
+                                                group_by
+            
